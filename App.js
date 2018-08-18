@@ -1,12 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet,  View } from 'react-native';
+import { Content, Container, Button, Text } from 'native-base';
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <Container style={styles.container}>
         <Text>Open up App.js to start working on your app! YES</Text>
-      </View>
+        <Content>
+          <Button danger>
+              <Text>Button</Text>
+          </Button>
+        </Content>
+      </Container>
     );
   }
 }
