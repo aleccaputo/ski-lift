@@ -40,7 +40,6 @@ export default class App extends React.Component {
     state = {
         isLoggedIn: false
     };
-
     render() {
         if (!this.state.isReady) {
             return <Expo.AppLoading />;
