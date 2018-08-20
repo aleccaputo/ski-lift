@@ -1,15 +1,25 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import Login from './screens/login';
-import SignUp from './screens/signup'
-import { createStackNavigator } from 'react-navigation';
+import SignUp from './screens/signup';
+import Home from './screens/home';
+import Profile from './screens/profile';
+import AuthLoadingScreen from './screens/authLoading';
+import { createStackNavigator, createBottomTabNavigator, createSwitchNavigator } from 'react-navigation';
 import { Container } from 'native-base'
 
-const RootStack = createStackNavigator(
-   {
-       Login: Login,
-       SignUp: SignUp
-   },
+const HomeTabNav = createBottomTabNavigator(
+    {
+        Home: Home,
+        Profile: Profile
+    }
+);
+
+const AuthStack = createStackNavigator(
+    {
+        Login: Login,
+        SignUp: SignUp
+    },
     {
         initialRouteName: 'Login',
         headerMode: 'none',
@@ -18,12 +28,25 @@ const RootStack = createStackNavigator(
         }
     }
 );
+
+const Navigation =  createSwitchNavigator(
+    {
+        AuthLoading: AuthLoadingScreen,
+        App: HomeTabNav,
+        Auth: AuthStack,
+    },
+    {
+        initialRouteName: 'AuthLoading',
+    }
+);
+
 export default class App extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            isReady: false
+            isReady: false,
+            isAuthed: false,
         };
     }
 
@@ -46,7 +69,7 @@ export default class App extends React.Component {
         }
         return (
             <Container style={{flex: 1}}>
-                <RootStack/>
+                <Navigation/>
             </Container>
         );
     }
