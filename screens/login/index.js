@@ -13,7 +13,7 @@ export default class Login extends React.Component {
         return(
             <KeyboardAvoidingView>
                 <ScrollView>
-                    <Container>
+                    <Container style={styles.header}>
                         <Header>
                             <Body>
                             <Title>Log In</Title>
@@ -49,6 +49,9 @@ export default class Login extends React.Component {
     }
 }
 const styles = StyleSheet.create({
+    header: {
+        paddingTop: 20,
+    },
     form: {
         backgroundColor: '#222',
     },

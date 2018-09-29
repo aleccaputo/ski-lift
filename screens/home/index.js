@@ -1,9 +1,10 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text, Button, Title } from 'native-base';
 export default class Home extends React.Component {
     render(){
         return(
-            <Container>
+            <Container style={styles.header}>
                 <Header>
                     <Body>
                     <Title>Recent Posts</Title>
@@ -45,3 +46,9 @@ export default class Home extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    header: {
+        paddingTop: 20,
+    }
+});
